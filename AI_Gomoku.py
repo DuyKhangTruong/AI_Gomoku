@@ -1,3 +1,4 @@
+#author: Khang Nguyen & The 
 from policy import Policy
 from board import Board
 

@@ -17,7 +17,7 @@ class AI:
     def moveLeft(self, board):
         for i in range(15):
             for j in range(15):
-                if board.config[i][j] == ' ':
+                if board.config[i][j] == 0:
                     return True
 
         return False
@@ -55,27 +55,27 @@ class AI:
             best = -1000000
             for x in range(15):
                 for y in range(15):
-                    if board.config[x][y] == ' ':
+                    if board.config[x][y] == 0:
                         board.config[x][y] = self.shape
                         score = self.MiniMax(
                             board, depth + 1, not (maxPlayer), x, y)
                         if score > best:
                             best = score
 
-                    board.config[x][y] = ' '
+                    board.config[x][y] = 0
             return best
 
         else:
             best = 10000000
             for i in range(15):
                 for j in range(15):
-                    if board.confsig[i][j] == ' ':
+                    if board.confsig[i][j] == 0:
                         board.config[i][j] = self.Opponent()
                         score = self.MiniMax(
                             board, depth + 1, not (maxPlayer), i, j)
                         if score < best:
                             best = score
-                    board.config[i][j] = " "
+                    board.config[i][j] = 0
             return best
 
     def findBestMove(self, board):

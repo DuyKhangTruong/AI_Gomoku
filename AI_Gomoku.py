@@ -57,8 +57,10 @@ class AI:
                 for y in range(15):
                     if board.config[x][y] == ' ':
                         board.config[x][y] = self.shape
-                        best = self.MiniMax(
+                        score = self.MiniMax(
                             board, depth + 1, not (maxPlayer), x, y)
+                        if score > best:
+                            best = score
 
                     board.config[x][y] = ' '
             return best
@@ -69,8 +71,10 @@ class AI:
                 for j in range(15):
                     if board.confsig[i][j] == ' ':
                         board.config[i][j] = self.Opponent()
-                        best = self.MiniMax(
+                        score = self.MiniMax(
                             board, depth + 1, not (maxPlayer), i, j)
+                        if score < best:
+                            best = score
                     board.config[i][j] = " "
             return best
 
